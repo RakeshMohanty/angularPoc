@@ -1,0 +1,21 @@
+<main id="Leads_post_login_content" class="post-login-content">
+    <button type="button" class="btn btn-success" (click)="openBroadcast()"> + New Broadcast</button>   
+    <div id="Leads_wrapperHeading" class="wrapperHeading">
+        <h3 id="Leads_page_title" class="page-title">Lead Management</h3>
+    </div>
+    <fn-product-category (onLoadCustomer)="onLoadCustomer($event)"></fn-product-category>
+    <div class="global-filter-wrapper">
+        <div class="align">
+            <div class="d-inline-block pos-rel">
+                <p-dropdown class="gloabl-filter-dropdown" [options]="masterFilterData"
+                    [(ngModel)]="selectedFilterValue" (onChange)="onFilterChange()">
+                </p-dropdown>
+                <input type="text" class="filter-text-field" placeholder="Type" [(ngModel)]="searchInputModel"  (ngModelChange)="updateSearchModel($event)">
+                <span *ngIf="showResetIcon" class="refresh-icon" (click)="onReset()"></span>
+            </div>
+            <button class="btn btn-default search" (click)="onSearchClick()">Search</button>
+        </div>
+    </div>
+    <fn-datagrid [gridConfiguration]="gridConfiguration" [dataSource]="dataSource" [cellRender]= "cellRenderData"
+        (onGridChanges)="onGridChanges($event)" (onActionTrigger)="onAction($event)"></fn-datagrid>
+</main>

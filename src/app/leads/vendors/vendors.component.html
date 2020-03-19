@@ -1,0 +1,7 @@
+<div id="Vendor_button-wrapper" class="text-right p-2">
+    <button id="Vendor_button" class="btn btn-success" (click)="addNewVendor()" *ngIf="!isAddVendorEnabled">+ New Vendor</button>
+</div>
+<fn-add-vendor *ngIf="isAddVendorEnabled" [selectedVendor]="selectedVendor" [isEditMode]="isEditMode"
+    (vendorPageHandler)="onPageNavigation($event)"></fn-add-vendor>
+<fn-datagrid [gridConfiguration]="gridConfiguration" *ngIf="!isEditMode && !isAddVendorEnabled" [dataSource]="dataSource" [cellRender]= "cellRenderData"
+    (onActionTrigger)="onAction($event)"></fn-datagrid>

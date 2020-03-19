@@ -1,0 +1,7 @@
+<div class="offers-section-wrapper">
+    <div class="text-right"><button class="btn btn-default" (click)="openOfferModalPopup(false)">+ Add Offer</button>
+   </div>
+ </div>
+<span>{{selectedVendor.name}}</span>
+<fn-datagrid class="offer-grid" [gridConfiguration]="gridConfiguration" [dataSource]="dataSource" [cellRender]="cellRenderData"
+    (onActionTrigger)="onAction($event)"></fn-datagrid>

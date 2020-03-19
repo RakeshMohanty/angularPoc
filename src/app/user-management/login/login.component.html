@@ -1,0 +1,29 @@
+<h1 id="Login__PageTitle" class="page-title">Login</h1>
+<form id="Login__LoginForm" action="" name="setPasswordForm" class="login-form"
+    [formGroup]="loginForm" (Submit)="login()">
+    <div id="Login__FormGroup1" class="form-group">
+        <label id="Login__Email" for="createAccountEmail">Email </label>
+        <input type="email" class="form-control" id="createAccountEmail" aria-describedby="emailHelp"
+            placeholder="Enter email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div id="email-error-msg" *ngIf="submitted && f.email.errors.required">This field cannot be blank</div>
+            <div id="emailFormat-error-msg" *ngIf="submitted && f.email.errors.email">Invalid email address</div>
+        </div>
+    </div>
+    <div id="Login__FormGroup2" class="form-group">
+        <label id="Login__Password" for="setPassword">Password </label>
+        <input type="password" class="form-control" id="setPassword" aria-describedby="emailHelp"
+            formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div id="password-error-msg" *ngIf="submitted && f.password.errors.required">This field cannot be blank</div>
+        </div>
+    </div>
+    <button id="Login__Action" class="btn btn-success w-100" type="submit" (click)="login()">Log in </button>
+</form>
+
+<a id="Login__ForgotPassword" href="" [routerLink]="['/forgot-password']" class="forgot-passowrd-link">Forgot
+    Password?</a>
+
+<p id="Login__LoginLink" class="login-link">Not Registered?
+    <a id="Login__Link" href="#" [routerLink]="['/register']" class="link">Create Account</a>
+</p>

@@ -1,0 +1,20 @@
+<header id="PostLoginHeader_post-login-header" class="post-login-header">
+        <img id="PostLoginHeader_logo" src="../../../assets/images/FN_logo_hz.svg" alt="logo_horozontal" class="logo">
+        <div id="PostLoginHeader_float-right" class="float-right">
+            <div id="PostLoginHeader_user-dropdown" class="row mx-0 user-dropdown">
+                <div id="PostLoginHeader_col" class="col">
+                    <div id="PostLoginHeader_dropdown" ngbDropdown class="d-inline-block dropdown">
+                        <div id="PostLoginHeader_d-flex" class="d-flex">
+                            <span id="PostLoginHeader_userImage" class="user-image"></span>
+                        <button class="btn btn-outline-primary dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle><p class="user-name">Smith William</p>
+                        <p id="PostLoginHeader_designation" class="designation">Loan Officer</p></button>
+                    </div>
+                        <div id="PostLoginHeader_dMenu" ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu">
+                            <button id="PostLoginHeader_password" ngbDropdownItem>Change Password</button>
+                            <button id="PostLoginHeader_logout" ngbDropdownItem (click)= "logout()" >Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

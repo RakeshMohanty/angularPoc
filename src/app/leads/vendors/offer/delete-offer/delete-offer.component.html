@@ -1,0 +1,10 @@
+<fn-modal-content [data]="data" [footer]="true" (onDialogClose)="cancelOfferDeletion()"
+    (onConfirm)="deleteOffer(data.bodyContent)">
+    <div dialog-body class="long-description-wrapper">
+        <div>
+            <div>This offer will be deleted.</div>
+            <div>
+                Would you like to continue ? </div>
+        </div>
+    </div>
+</fn-modal-content>

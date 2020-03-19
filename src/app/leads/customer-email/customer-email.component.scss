@@ -1,0 +1,10 @@
+@import '../../../assets/sass/variables.scss';
+
+.long-description-wrapper {
+    padding: 20px;
+    padding-bottom: 0;
+    text-align: center;
+    color: $base-blue;
+    font-size: 20px;
+    font-family: 'Rubik-Regular', sans-serif;
+}

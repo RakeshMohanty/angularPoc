@@ -1,0 +1,35 @@
+.broadcast-wrapper {
+    .card {
+        border: 0;
+        .card-body {
+            padding: 0;
+            padding-left: 35px;
+            padding-right: 15px;
+            .form-group {
+                label {
+                    font-size: 14px;
+                    font-family: 'Rubik-Regular', sans-serif;
+                    color: #6C6A6A;
+                    width: 100%;
+                }
+                input {
+                    font-size: 14px;
+                    font-family: 'Rubik-Medium', sans-serif;
+                    color: #000000;
+                    border: 1px solid #AAA7A7;border-radius: 6px;
+                    &.is-invalid {
+                        margin-bottom: 5px;
+                    }
+                }
+                .small {
+                    font-size: 11px;
+                    font-family: 'Rubik-Regular', sans-serif;
+                    color: #002B49;
+                    float: right;
+                    position: relative;
+                    top: 4px;
+                }
+            }
+        }
+    }
+}

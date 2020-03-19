@@ -1,0 +1,159 @@
+@import 'variables';
+@import 'font';
+
+body {
+    font-family: Rubik-Regular;
+
+    .page-title {
+        font-family: Rubik-Light;
+    }
+
+    a {
+        color: $base-blue;
+    }
+}
+
+
+
+/* Form styles*/
+
+.form-group {
+    label {
+        color: $label-grey;
+    }
+}
+
+.vendor-page-wrapper {
+    .form-group {
+        label {
+            color: $label-grey;
+            font-family: 'Rubik-Regular', sans-serif;
+            font-size: 14px;
+        }
+    }
+}
+
+.form-control {
+    border: 1px solid $field-grey;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-bottom: 22px;
+}
+
+.form-control:focus {
+    border: 2px solid $base-green;
+    box-shadow: none;
+}
+
+.btn-success {
+    font-family: 'Rubik-Bold';
+    background-image: linear-gradient(to right, #154475 0%, #5FBB70 51%, #154475 100%);
+    border-radius: 6px;
+    padding: 14px 20px;
+    font-size: 18px;
+    margin-right: 22px;
+    margin-bottom: 30px;
+    transition: 0.5s;
+    background-size: 200% auto;
+
+    &:hover {
+        background-position: right center;
+    }
+}
+
+
+.form-control {
+    &.is-invalid {
+        border: 2px solid $error-red;
+        background-image: none;
+    }
+}
+.is-invalid {
+    .ui-multiselect,.ui-dropdown {
+    border: 2px solid $error-red;
+    background-image: none;
+    }
+   }
+    
+   body .ui-multiselect .ui-multiselect-trigger, .ui-dropdown, .ui-dropdown-trigger {
+    background: transparent;
+   }
+.invalid-feedback,
+.error-message {
+    color: $error-red;
+    display: block;
+}
+
+.error-message {
+    text-align: center;
+    margin-top: 8px;
+}
+
+input::-webkit-input-placeholder {
+    /* Edge */
+    font-weight: 100;
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-weight: 100;
+}
+
+input::placeholder {
+    font-weight: 100;
+}
+
+.ui-calendar.ui-calendar-w-btn input {
+    max-width: 110px !important;
+}
+
+body .ui-radiobutton+.ui-radiobutton-label {
+    margin-right: 10px;
+}
+
+.modal.broadcast-window-popup,
+body .add-offer-window-popup {
+    .modal-footer {
+        justify-content: flex-end;
+        margin-right: 15px;
+    }
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active,
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active.ui-state-focus,
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled):hover {
+    background-color: #fff;
+    border-color: #a6a6a6;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active .ui-radiobutton-icon,
+body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider,
+body .ui-inputswitch.ui-inputswitch-checked.ui-inputswitch-focus .ui-inputswitch-slider,
+body .ui-inputswitch.ui-inputswitch-checked:not(.ui-state-disabled):hover .ui-inputswitch-slider {
+    background: #4FA871;
+}
+
+body .ui-button.ui-datepicker-trigger , body .ui-button:enabled:hover {
+    background: #fff;
+    border-color: #fff;
+}
+
+.ui-button-icon-only .ui-button-icon-left.pi-calendar {
+    background: url('../../assets/images/calendar.svg') no-repeat;
+    margin: -0.7em 0 0 -0.6em;
+    width: 1.6em;
+    height: 2.6em;
+
+    &::before {
+        display: none;
+    }
+}
+
+body .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+    border: 0;
+}
+
+.ui-calendar.ui-calendar-w-btn {
+    border: 1px solid #a6a6a6;
+    border-radius: 4px;
+}

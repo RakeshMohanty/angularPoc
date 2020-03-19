@@ -1,0 +1,10 @@
+<fn-modal-content [data]="data">
+    <div dialog-body class="long-description-wrapper">
+        <h2 style="color:#140076;"> {{data.bodyContent.productName}} </h2>
+        <p>{{data.bodyContent.offerName}}</p>
+        <div *ngIf = "data.bodyContent.longDescription">
+        <p class="test">Description</p>
+        <h2 class="long-description text-justify"> {{data.bodyContent.longDescription}} </h2>
+        </div>
+    </div>
+</fn-modal-content>

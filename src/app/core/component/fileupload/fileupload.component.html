@@ -1,0 +1,10 @@
+<p-fileUpload #fileInput (onSelect)="onFileSelect($event)" customUpload="true" [disabled]="fileUploader.disabled"
+    [auto]="false" mode="advanced" [fileLimit]="fileUploader.fileLimit" [previewWidth]="fileUploader.previewWidth"
+    [chooseLabel]="fileUploader.chooseLabel" [customUpload]="fileUploader.customUpload" [accept]="fileUploader.accept"
+    [styleClass]="fileUploader.styleClass" [maxFileSize]="fileUploader.maxFileSize"
+    [showUploadButton]="fileUploader.showUploadButton" [showCancelButton]="fileUploader.showCancelButton"
+    [invalidFileSizeMessageDetail]="fileUploader.errorMesssage">
+    <ng-template pTemplate="content">
+        <p>Drag and Drop Files Here to Upload</p>
+    </ng-template>
+</p-fileUpload>

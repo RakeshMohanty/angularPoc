@@ -1,0 +1,81 @@
+@import 'variables';
+@import 'font';
+
+body {
+    font-family: Rubik-Regular;
+
+    .page-title {
+        font-family: Rubik-Light;
+    }
+
+    a {
+        color: $base-blue;
+    }
+}
+
+
+
+/* Form styles*/
+
+.form-group {
+    label {
+        color: $label-grey;
+    }
+}
+
+.form-control {
+    border: 1px solid $field-grey;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-bottom: 22px;
+}
+
+.form-control:focus {
+    border: 2px solid $base-green;
+    box-shadow: none;
+}
+
+.btn-success {
+    font-family: 'Rubik-Bold';
+    background-image: linear-gradient(to right, #154475 0%, #5FBB70  51%, #154475  100%);
+    border-radius: 6px;
+    padding: 14px 20px;
+    font-size: 18px;
+    margin-right: 22px;
+    margin-bottom: 30px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    &:hover {
+        background-position: right center;
+    }
+}
+
+
+.form-control {
+    &.is-invalid {
+        border: 2px solid $error-red;
+        background-image: none;
+    }
+}
+
+.invalid-feedback,
+.error-message {
+    color: $error-red;
+}
+
+.error-message {
+    text-align: center;
+    margin-top: 8px;
+}
+
+input::-webkit-input-placeholder { /* Edge */
+    font-weight: 100;
+  }
+  
+  input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-weight: 100;
+  }
+  
+  input::placeholder {
+    font-weight: 100;
+  }

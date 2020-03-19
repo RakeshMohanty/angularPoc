@@ -1,0 +1,21 @@
+<h1 id="VerifyCode__PageTitle" class="page-title">Verification</h1>
+<p id="VerifyCode__VerifcationText1" class="verification-text">We have sent the verification code on</p>
+<p id="VerifyCode__VerifcationText2" class="verification-text code">XXX-XXX-{{verifyCodeDetail['phoneNumber']}}</p>
+<p id="VerifyCode__VerifcationText3" class="verification-text">it will be valid for {{verifyCodeDetail['validityTime']}} minutes</p>
+<div id="VerifyCode__VerifcationForm" [formGroup]="verifyCode" name="verificationForm" class="verification-form">
+    <div id="VerifyCode__FormGroup" class="form-group">
+        <div id="VerifyCode__SecurityCode" class="security-code-container ">
+            <div id="VerifyCode__fieldwWrap__{{i}}" class="field-wrap" *ngFor="let i of [1, 2, 3,4]">
+                <input fnPasteDigitOnly type="tel" formControlName="code{{i}}" maxlength="1" autocorrect="off"
+                    autocomplete="off" autocapitalize="off" spellcheck="false" id="char{{i}}"
+                    class="form-control  form-textbox " aria-label=" Digit 1" placeholder="" data-index="0">
+            </div>
+        </div>
+        <div *ngIf="checkRequiredValidation()" class="error-message">Please enter verification code we have texted you
+        </div>
+    </div>
+    <p class="login-link">If you didn't recieve a code?
+        <button (click)="resendVerification()" class="link">Resend</button>
+    </p>
+    <button id="VerifyCode__Action" class="btn btn-success w-100" type="button" (click)="onSubmit()">Verify </button>
+</div>

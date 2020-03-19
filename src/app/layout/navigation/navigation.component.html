@@ -1,0 +1,17 @@
+<div id="Navigation_ham_icon" class="align ham-icon" (click)="toggleNav()" [ngClass]="{'expand': hamExpand}">
+	<div id="Navigation_line_1" class="line line-1"></div>
+	<div id="Navigation_line_2" class="line line-2"></div>
+	<div id="Navigation_line_3" class="line line-3"></div>
+
+</div>
+<ul id="Navigation_nav" class="nav flex-column" [ngClass]="{'expand': hamExpand}">
+	<li id="Navigation_{{i}}" *ngFor="let navItem of navItems; let i = index"
+		[ngClass]="{'flex-direction-column' : navItem.url == '/contacts' }" class="active nav-item"
+		[class.active]="selectedNavIndex === i" (click)="setNavIndex(i)">
+		<span id="Navigation_label_{{i}}" *ngIf="!navItem.active && navItem.url == '/contacts'"> Coming Soon </span>
+		<a id="Navigation_link_{{i}}" *fnEntitlement="navItem.permissions" routerLink="{{navItem.url}}">
+			<span id="Navigation_icon_{{i}}" class="mr-3 ml-3 icon {{navItem.icon}} text-size-lg link-icon"></span>
+			<span id="Navigation_text_{{i}}" class="text-size-sm">{{navItem.name}}</span>
+		</a>
+	</li>
+</ul>

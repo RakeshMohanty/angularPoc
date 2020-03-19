@@ -1,0 +1,22 @@
+<p-carousel [value]="productData" [numVisible]="isMobileView? 1: cardsVisibleLength" [numScroll]="1" [circular]="false"
+    [ngClass]="{ 'fixed-card-length': isCustomCards}">
+    <ng-template let-product pTemplate="item">
+        <div class="card-details" (click)="onOfferSelect(product)" carousel-formatter [options]="{ productData: product }" >
+            <div class="p-grid p-nogutter">
+                <div class="p-col-12 card-data">
+                    <div class="card-title">{{product.productName}}</div>
+                    <div class="card-content">
+                        <div class="short-desc">{{product.shortDescription}}</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="view-more-link">
+                            <button (click)="openModal(product)" class="btn bn-default">View more <span
+                                    class="right-arrow"></span></button>
+                        </div>
+                        <div class="validity">{{product.valid| date:'dd/MM/yyyy'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

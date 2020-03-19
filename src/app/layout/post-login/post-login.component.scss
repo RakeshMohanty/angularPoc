@@ -1,0 +1,56 @@
+@import '../../../assets/sass/variables';
+
+.post-login {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+
+    .post-login-body {
+        display: flex;
+        flex: 1;
+    }
+
+    .post-login-content {
+        flex: 1;
+        padding: 0px 20px;
+    }
+
+    .post-login-nav {
+        flex: 0 0 12em;
+        width: 170px;
+        background: #DBDEDE 0% 0% no-repeat padding-box;
+    }
+
+    .post-login,
+    .post-login-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    @media screen and (max-width: 1024px) {
+        .post-login-body {
+            display: block;
+        }
+    }
+
+    @media (min-width: 1024px){
+        .post-login-content {
+            flex: 1;
+            max-width: calc(100% - 210px);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .post-login-body {
+            flex-direction: row;
+            flex: 1;
+        }
+
+        .post-login-nav {
+            flex: 0 0 12em;
+        }
+    }
+
+}

@@ -1,0 +1,20 @@
+<p-tabView (onChange)="onCategorySelect($event.index)" *ngIf="!isMobileView">
+    <p-tabPanel #tabContent *ngFor="let category of productCategoriesList; let i = index;let first = first;"
+        [selected]="first" [disabled]="isAllowedAccess" [header]="category.productCategoryName" lazy="true"
+        cache="true">
+        <ng-container *ngTemplateOutlet="productOfferTemplate">
+        </ng-container>
+    </p-tabPanel>
+</p-tabView>
+
+<div *ngIf="isMobileView" class="product-category-dropdown-wrapper">
+    <p-dropdown class="product-category-dropdown" [options]="productCategoriesList" optionLabel="productCategoryName"
+        [(ngModel)]="selectedCategory" (onChange)="onCategoryChange()">
+    </p-dropdown>
+    <ng-container *ngTemplateOutlet="productOfferTemplate">
+    </ng-container>
+</div>
+
+<ng-template #productOfferTemplate content-container [component]="productOffers?.component"
+    (onOfferSelect)="onProductOfferSelect($event)" [componentData]="productOffers?.componentData"
+    [isMobileView]="isMobileView"></ng-template>

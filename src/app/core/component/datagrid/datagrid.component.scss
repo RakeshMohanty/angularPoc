@@ -1,0 +1,66 @@
+.action-icons {
+    margin: 1px 10px;
+    width: 19px;
+    height: 18px;
+    background: transparent;
+    border: 0;
+    &.notification  {
+        background: url(../../../../assets/images/grid-notification.svg) no-repeat;
+        &.newNotification{
+            position: relative;
+            &::after{
+                content: "";
+                padding: 4px;
+                border-radius: 50%;
+                border: 1px solid #fff;
+                background: #F88F00;
+                position: absolute;
+                top: -3px;
+                right: -2px;
+            }
+        }
+    }
+    &.email {
+        background: url(../../../../assets/images/grid-email.svg) no-repeat;
+    }
+    &:disabled, &.disabled{
+        filter: grayscale(0.9);
+        pointer-events: none;
+    }
+
+    &.edit {
+        padding-left: 30px;
+        position: relative;
+        width: auto;
+        height: auto;
+        background-position: 0px 5px;
+        background: url(../../../../assets/images/edit-green.svg) no-repeat;
+        line-height: 1.1;
+    }
+    &.delete {
+        width: auto;
+        height: auto;
+        background-position: 0px 5px;
+        background: url(../../../../assets/images/trash.svg) no-repeat;
+        line-height: 1.1;
+        padding: 9px 8px;
+    }
+}
+
+:host {
+    clear: both;
+
+    &::before,
+    &::after {
+        content: "";
+        clear: both;
+    }
+}
+ 
+
+.featured-icon {
+    display: inline-block;
+    margin: 3px;
+    padding: 7px 12px;
+    background: url(../../../../assets/images/megaphone.svg) no-repeat;
+}

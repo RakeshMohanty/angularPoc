@@ -1,0 +1,141 @@
+@import '../../../../assets/sass/variables.scss';
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.vendor-page-wrapper {
+    padding: 25px 35px;
+
+    @media (max-width: 768px) {
+        padding: 20px 0px;
+    }
+
+    .account-setup {
+        .nav-back {
+            font-family: 'Rubik-Regular', sans-serif;
+            font-size: 16px;
+            color: $base-blue;
+
+            .back-arrow {
+                width: 13px;
+                height: 12px;
+                margin-right: 11px;
+                transform: rotate(90deg);
+            }
+        }
+
+        .split-buttons-wrapper {
+            text-align: center;
+            border: 2px solid;
+            display: flex;
+            margin: 25px auto;
+            max-width: 520px;
+            border-radius: 6px;
+            color: $secondary-blue;
+
+            .btn-default {
+                width: 260px;
+                background: #EFF6FF;
+                color: #194075;
+                border: 0;
+                border-radius: 0px;
+
+                &.active {
+                    background: $secondary-blue;
+                    color: $white;
+                }
+            }
+        }
+
+        .form-control {
+            min-height: 50px;
+            resize: none;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-family: 'Rubik-Regular', sans-serif;
+
+            &.ng-invalid {
+                margin-bottom: 8px;
+            }
+
+        }
+    }
+}
+
+/* PrimeNg Multi Select Customization */
+body {
+
+    .ui-multiselect {
+        display: block;
+        min-height: 50px;
+        border-radius: 6px;
+        margin-bottom: 30px;
+
+        .ui-multiselect-trigger {
+            color: $success-green;
+            right: 5px;
+        }
+
+        .ui-multiselect-panel {
+            .ui-multiselect-header {
+                display: none;
+            }
+        }
+
+        .ui-multiselected-item-token {
+            background: #ebebeb;
+            padding: 5px 7px;
+            display: inline-block;
+            margin: 3px 3px;
+
+            .label-text {
+                font-family: 'Rubik-Medium', sans-serif;
+                font-size: 14px;
+                color: $black;
+            }
+
+            .close-icon {
+                font-weight: bold;
+                margin-left: 7px;
+                color: $base-blue;
+                font-size: 12px;
+                line-height: 22px;
+                vertical-align: middle;
+
+                &:hover {
+                    text-decoration: none;
+                    color: $base-blue;
+                }
+            }
+        }
+    }
+    .ng-invalid {
+        >.ui-multiselect{
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.btn {
+    margin: 0;
+    padding: 9px 40px;
+    font-family: "Rubik-Bold", sans-serif;
+    font-size: 14px;
+    min-width: 140px;
+    white-space: nowrap;
+
+    &.btn-default {
+        border: 1px solid #140076;
+        color: #140076;
+        border-radius: 6px;
+    }
+
+    &.btn-success {
+        margin-left: 12px;
+    }
+}

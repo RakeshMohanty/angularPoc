@@ -1,0 +1,38 @@
+<fn-modal-content [data]="data" [footer]="true" (onDialogClose)="cancelBroadcast()" (onConfirm)="submitBroadcast()">
+    <div dialog-body class="broadcast-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="broadcast">
+                    <div class="form-group">
+                        <label>Message Title <span class="small">Max: 60 characters</span></label>
+                        <input type="text" formControlName="title" maxlength="60" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && formField.title.errors }" />
+                        <div *ngIf="submitted && formField.title.errors" class="invalid-feedback">
+                            <div *ngIf="formField.title.errors.required">This field cannot be blank</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Display Message <span class="small">Max: 160 characters</span></label>
+                        <input type="text" formControlName="content" maxlength="160" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && formField.content.errors }" />
+                        <div *ngIf="submitted && formField.content.errors" class="invalid-feedback">
+                            <div *ngIf="formField.content.errors.required">This field cannot be blank</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Web link for more details</label>
+                        <input type="text" fnValidateOnBlur [validateFormControl]="broadcast.controls.webLink"
+                            formControlName="webLink" class="form-control"
+                            [ngClass]="{'is-invalid': formField.webLink.errors && broadcast.controls.webLink.touched}" />
+                        <div *ngIf="formField.webLink.errors" class="invalid-feedback">
+                            <div *ngIf="formField.webLink.errors.pattern && broadcast.controls.webLink.touched">Invalid
+                                weblink
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</fn-modal-content>

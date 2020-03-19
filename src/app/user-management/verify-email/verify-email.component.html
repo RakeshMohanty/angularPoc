@@ -1,0 +1,21 @@
+<h1 class="page-title">{{title}}</h1>
+<p class="verification-text">We will send you one time verification code to your registered mobile number to verify your
+    account</p>
+<div id="verifyEmail__VerifyEmailWrapper" [formGroup]="verifyEmail">
+    <div id="verifyEmail__formGroup" class="form-group">
+        <label id="verifyEmail__emailLabel" for="createAccountEmail">Email </label>
+        <input formControlName="email" fnValidateOnBlur [validateFormControl]="verifyEmail.controls.email"
+            class="form-control" id="createAccountEmail"
+            [ngClass]="{ 'is-invalid':formField.email.errors && verifyEmail.controls.email.touched}" aria-describedby="emailHelp"
+            placeholder="Enter email">
+        <div *ngIf="formField.email.errors" id="verifyEmail__ValidationError" class="invalid-feedback">
+            <div id="verifyEmail__emailRequired" *ngIf="formField.email.errors.required && verifyEmail.controls.email.touched">This field cannot be blank
+            </div>
+            <div id="verifyEmail__emailValid"
+                *ngIf="!formField.email.errors.required && verifyEmail.controls.email.touched">Invalid email address
+            </div>
+        </div>
+    </div>
+    <button [disabled]="!verifyEmail.valid" id="verifyEmail__continue" class="btn btn-success w-100" (click)="onSubmit()" type="button">Continue
+    </button>
+</div>

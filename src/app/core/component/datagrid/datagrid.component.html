@@ -1,0 +1,49 @@
+<p-table #dt [columns]="columnDefs" [value]="dataSource.rowData" [lazy]="gridConfiguration.isServerSide"
+    (onLazyLoad)="loadData($event)" [paginator]="gridConfiguration.gridOptions.pagination" [rows]=dataSource.rowPerPage
+    [rowsPerPageOptions]="gridConfiguration.gridOptions.rowsPerPageOptions" [totalRecords]="dataSource.totalRecord">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columnDefs" [pSortableColumn]="col.field" [pSortableColumnDisabled]="!col.enableSort"
+                [style.width]="col.width">
+                <div>{{col.header}}
+                    <p-sortIcon [field]="col.field" *ngIf="col.enableSort"></p-sortIcon>
+                </div>
+            </th>
+        </tr>
+        <tr *ngIf="gridConfiguration.gridOptions.enableFilter">
+            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                <div>
+                    <input *ngIf="col.enableFilter" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columnDefs">
+        <tr>
+            <ng-container *ngFor="let col of columnDefs">
+                <td *ngIf="!col.cellTemplate">
+                    <div *ngIf="col.field!=='featured'">{{!col.columnFormatterFunction ?
+                        rowData[col.field] : col.columnFormatterFunction(rowData[col.field]) }}</div>
+
+                    <div *ngIf="col.field==='featured'"><span *ngIf="rowData[col.field]" class="featured-icon"> </span></div>
+
+                </td>
+                <td *ngIf="col.cellTemplate">
+                    <div>
+                        <ng-container *ngFor="let act of col.cellTemplate.actions" [ngSwitch]="act.type">
+                            <p-inputSwitch *ngSwitchCase="'inputSwitch'" [(ngModel)]="rowData[col.field]">
+                            </p-inputSwitch>
+                            <button *ngSwitchDefault [ngClass]="cellRender(act.name,rowData)"
+                                (click)="onActionClick(act.eventName, rowData)"
+                                class="action-icons {{act.icon}}">{{rowData[col.field]}}</button>
+                        </ng-container>
+                    </div>
+                </td>
+            </ng-container>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <span *ngIf=" !dataSource.rowData || dataSource.rowData.length === 0"> No Records Found</span>
+    </ng-template>
+</p-table>

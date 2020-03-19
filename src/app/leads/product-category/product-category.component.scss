@@ -1,0 +1,9 @@
+:host {
+    &::before,&:after{
+        content: "";
+        clear: both;
+    }    
+}
+.product-category-dropdown-wrapper {
+    margin-bottom: 15px;
+}

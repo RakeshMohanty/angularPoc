@@ -1,0 +1,39 @@
+<fn-modal-content [data]="data">
+    <div dialog-body class="long-description-wrapper">
+        <fn-load-mask [isLoading]="isLoading" [isComponent]="true"></fn-load-mask>
+        <div class="message-wrapper">
+            <div class="refresh-container">
+                <div class="float-left">{{ data.bodyContent.rowData.name }}</div>
+                <button class="float-right" (click)="refresh()" type="submit">
+                    <span class="refresh-icon"></span> Refresh </button>
+            </div>
+
+            <div #messageContent class="message-content">
+                <div class="messages" *ngFor="let message of messageList;">
+                    <div [ngClass]="(message.fromSponsor)?'from':'to'">
+                        <div class="arrow">
+                            <div class="outer"></div>
+                            <div class="inner"></div>
+                        </div>
+                        <div class="text"> {{message.content}} </div>
+                        <div class="time">{{ message.date }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="messages-footer">
+                <form class="d-flex" [formGroup]="message">
+                    <div class="message-icon">
+                        <span class="notification-icon"></span>
+                    </div>
+                    <div class="new-message">
+                        <input type="text" maxlength="60" formControlName="content" class="form-control" placeholder="Type your message here…">
+                        <span class="max-length-text">Max 160 characters</span>
+                    </div>
+                    <div class="send-icon">
+                        <button [disabled]="!message.valid" class="send-file-icon" (click)="onSubmit()" type="submit"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</fn-modal-content>

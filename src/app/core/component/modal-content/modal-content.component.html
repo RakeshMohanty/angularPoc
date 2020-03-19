@@ -1,0 +1,18 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <p>{{ data.title }}</p>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <ng-content select="[dialog-body]"></ng-content>
+    </div>
+
+
+    <div *ngIf="footer" class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="cancel()">{{ data.cancelTitle }}</button>
+        <button type="button" class="btn btn-success" (click)="ok()" data-dismiss="modal">{{ data.okTitle }}</button>
+    </div>
+    <fn-load-mask [isLoading]="isLoading" [isComponent]="true"></fn-load-mask>
+</div>

@@ -1,0 +1,103 @@
+<div id="Vendor_vendor-page-wrapper" class="vendor-page-wrapper">
+    <div id="Vendor_account-setup" class="account-setup">
+        <div id="Vendor_nav-back" class="nav-back">
+            <img id="Vendor_back-arrow" class="back-arrow" src="../../../../assets/images/down-arrow.svg" alt="back-icon" />
+            <span id="Vendor_left-arrow" class="left-arrow" (click)="onAddVendorFormCancel()">Vendor Account Setup</span>
+        </div>
+        <div id="Vendor_split-buttons-wrapper" class="split-buttons-wrapper">
+            <button id="Vendor_comp_button" class="btn btn-default" [ngClass]="{'active': enableCompanyDetails}" (click)="onTabClick('Company Details')">Company Details</button>
+            <button id="Vendor_offers_button" class="btn btn-default" [ngClass]="{'active': enableVenderDetails}" (click)="onTabClick('Offers')" [disabled]="!enableOfferTab">Offers</button>
+        </div>
+        <div id="Vendor_Vendor-form-wrapper" class="mt-5" *ngIf="enableCompanyDetails">
+            <form id="Vendor_Vendor-form" [formGroup]="vendorForm">
+                <div id="company_details" class="company-details-form-wrapper">
+                    <div class="row" id="Vendor_form-container">
+                        <div class="col-12 col-md-4 pr-4" id="Vendor_left-content-wrapper">
+                            <div class="form-group" id="Vendor_name_wrapper">
+                                <label for="VendorsName" id="Vendor_label_1">Vendor Name*</label>
+                                <input type="Text" class="form-control" id="VendorsName" formControlName="name" placeholder="Enter" maxLength="250" [ngClass]="{ 'is-invalid': submitted && formField.name.hasError('required') }"
+                                />
+                                <div id="Vendor_errormsg_1" class="invalid-feedback" *ngIf="formField.name.hasError('required') && submitted">
+                                    This field cannot be blank
+                                </div>
+                            </div>
+                            <div class="form-group" id="Vendor_category_wrapper">
+                                <label for="VendorsName" id="Vendor_abel_2">Vendor Category*</label>
+                                <p-multiSelect id="Vendor_multiselect_drop" [options]="vendorCategoriesList" [(ngModel)]="selectedVendorCategories" formControlName="categories" optionLabel="categoryName"
+                                    [showHeader]="true" [maxSelectedLabels]="4" [ngClass]="{ 'is-invalid': submitted && formField.categories.hasError('required') }">
+                                    <ng-template let-selectedCategories pTemplate="selectedItems">
+                                        <div *ngFor="let category of selectedCategories; let i = index;" class="ui-multiselected-item-token ui-corner-all">
+                                            <span class="label-text">{{category?.categoryName}}</span>
+                                            <span class="close-icon" (click)="clearCategory(i, selectedCategories, $event)"> X </span>
+                                        </div>
+                                    </ng-template>
+                                </p-multiSelect>
+                                <div id="Vendor_errormsg_2" class="invalid-feedback" *ngIf="formField.categories.hasError('required') && submitted">This field cannot be blank
+                                </div>
+                            </div>
+                            <div id="Vendor_description_wrapper" class="form-group">
+                                <label id="Vendor_label_3" for="CoreProduct">Core Product / Service description</label>
+                                <input type="Text" class="form-control" id="serviceDescription" formControlName="serviceDescription" maxLength="250" placeholder="Enter"
+                                />
+                            </div>
+                            <div id="Vendor_website_wrapper" class="form-group">
+                                <label id="Vendor_label_4" for="WebsiteName">Website</label>
+                                <input type="Text" class="form-control m-0" id="WebsiteName" fnValidateOnBlur [validateFormControl]="formField.website"  formControlName="website"
+                                    placeholder="Enter" />
+                                
+                                <div id="Vendor_errormsg_3" class="mt-2 invalid-feedback" *ngIf="formField.website.hasError('pattern') && formField.website.touched">Invalid weblink
+                                </div>
+                                <small id="Vendor_label_5" class="d-inline-block mt-2">*Mandatory - It will be displayed in mobile app</small>
+                            </div>
+                        </div>
+                        <div id="Vendor_right_content_wrapper" class="col-12 col-md-8">
+                            <div id="Vendor_left_content" class="col-12 col-md-6 left-content">
+                                <div id="Vendor_contact_person" class="form-group">
+                                    <label id="Vendor_label_6" for="VendorsName">Contact Person*</label>
+                                    <input type="Text" class="form-control" id="contactName" formControlName="contactName" maxLength="100" placeholder="Enter" [ngClass]="{ 'is-invalid': submitted && formField.contactName.hasError('required') }"
+                                    />
+                                    <div id="Vendor_errormsg_4" class="invalid-feedback" *ngIf="formField.contactName.hasError('required') && submitted">This field cannot be blank
+                                    </div>
+                                </div>
+                                <div id="Vendor_contact_us_wrapper" class="form-group">
+                                    <label id="Vendor_label_7" for="VendorsName">Contact Us</label>
+                                    <input type="Number" class="form-control" id="contactNumber" formControlName="contactNumber" maxLength="15" placeholder="Enter" [ngClass]="{ 'is-invalid': submitted && formField.contactNumber.hasError('required') }"
+                                    />
+                                    <div id="Vendor_errormsg_5" class="invalid-feedback" *ngIf="formField.contactNumber.hasError('required') && submitted">This field cannot be blank
+                                    </div>
+                                </div>                               
+                                <div id="Vendor_contact_email_wrapper" class="form-group">
+                                    <label id="Vendor_label_8" for="VendorsName">Contact Email</label>
+                                    <input type="email" class="form-control" id="contactEmail" fnValidateOnBlur [validateFormControl]="formField.contactEmail" maxLength="250"
+                                        formControlName="contactEmail" placeholder="Enter">
+                                    <div id="Vendor_errormsg_5" class="invalid-feedback" *ngIf="formField.contactEmail.hasError('email') && formField.contactEmail.touched">
+                                        Invalid email address
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Vendor_image-preview-component" class="col-12 col-md-6 image-preview-component"></div>
+                            <div id="Vendor_about_comp-wrapper" class="col-12">
+                                <div id="Vendor_about_comp_content" class="form-group">
+                                    <label id="Vendor_label_9" class="d-block" for="VendorsName">About the Company*
+                                        <small id="Vendor_label_10" class="float-right"> Max 350 characters
+                                        </small>
+                                    </label>
+                                    <textarea class="form-control" rows="5" id="comment" formControlName="serviceSummary" maxLength="350" [ngClass]="{ 'is-invalid': submitted && formField.serviceSummary.hasError('required') }"></textarea>
+                                    <div id="Vendor_errormsg_6" class="invalid-feedback" *ngIf="formField.serviceSummary.hasError('required') && submitted">This field cannot be blank
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div id="Vendor_bottom_button_wrapper" class="my-3 px-3 float-right">
+                <button id="Vendor_button_close" type="button" class="btn btn-default" (click)="onAddVendorFormCancel()">Close</button>
+                <button id="Vendor_button_save" type="button" class="btn btn-success" (click)="onAddVendorFormSubmit()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="enableVenderDetails">
+<fn-offer></fn-offer>
+</div>

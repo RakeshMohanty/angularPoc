@@ -1,0 +1,6 @@
+<fn-modal-content [data]="data" [footer]="true"  (onDialogClose)="cancelConfirmDialog()"
+(onConfirm)="onConfirm()">
+    <div dialog-body>
+        <p>{{data?.bodyContent?.errorMsg}}</p>
+    </div>
+</fn-modal-content>

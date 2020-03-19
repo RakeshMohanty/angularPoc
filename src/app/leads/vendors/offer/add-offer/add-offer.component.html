@@ -1,0 +1,122 @@
+<fn-modal-content [data]="data" [footer]="true" (onConfirm)="onAddOfferFormSubmit()" (onDialogClose)="onDialogClose()">
+    <div dialog-body class="add-offer-wrapper">
+        <div class="title-text">Altisource</div>
+
+        <form [formGroup]="offerForm">
+            <div class="row col m-0 add-offer-content">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="OffersCategory">Offers Category</label>
+                        <p-dropdown class="product-category-dropdown" [options]="offerCategoriesList"
+                            optionLabel="categoryName" formControlName="category" [placeholder]="!data.bodyContent.editMode? 'Select': null"
+                            [ngClass]="{ 'is-invalid': submitted && formField.category.hasError('required') }">
+                        </p-dropdown>
+                        <div class="invalid-feedback" *ngIf="formField.category.hasError('required') && submitted">
+                            This field cannot be blank
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="OffersName">offer Name
+                            <small class="float-right">Max 60 characters</small>
+                        </label>
+                        <input type="Text" class="form-control" id="OffersName" formControlName="name"
+                            placeholder="Enter"
+                            [ngClass]="{ 'is-invalid': submitted && formField.name.hasError('required') }"
+                            maxlength="60">
+                        <div class="invalid-feedback" *ngIf="formField.name.hasError('required') && submitted">This
+                            field cannot be blank
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="VendorsName">Offer Description
+                            <small class="float-right"> Max 120 characters</small>
+                        </label>
+                        <textarea class="form-control" rows="5" formControlName="description" id="comment"
+                            [ngClass]="{ 'is-invalid': submitted && formField.description.hasError('required') }"
+                            maxlength="120"></textarea>
+                        <div class="invalid-feedback" *ngIf="formField.description.hasError('required') && submitted">
+                            This field cannot be blank
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <label for="OffersCategory">From</label>
+                            <p-calendar formControlName="validFrom" [readonlyInput]="true" [minDate]="minDate"
+                                [maxDate]="maxDate" [showIcon]="true"
+                                [ngClass]="{ 'is-invalid': submitted && formField.validFrom.hasError('required') }"
+                                dateFormat="mm/dd/yy"></p-calendar>
+                            <div class="invalid-feedback" *ngIf="formField.validFrom.hasError('required') && submitted">
+                                This field cannot be blank
+                            </div>
+                            <div class="invalid-feedback" *ngIf="offerForm.hasError('notValid')">
+                                Valid to date should be greater than Valid from date
+                            </div>
+                        </div>
+                        <div class="seperator">-</div>
+                        <div class="form-group">
+                            <label for="OffersCategory">To</label>
+                            <p-calendar formControlName="validTill" [readonlyInput]="true" [minDate]="minDate"
+                                [maxDate]="maxDate" [showIcon]="true"
+                                [ngClass]="{ 'is-invalid': submitted && formField.validTill.hasError('required') }"
+                                dateFormat="mm/dd/yy"></p-calendar>
+                            <div class="invalid-feedback" *ngIf="formField.validTill.hasError('required') && submitted">
+                                This field cannot be blank
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group featured-wrapper">
+                        <div class="featured-offer-text">
+                            <span class="featured-icon"></span>
+                            <span class="text">Featured offer (Optional)</span>
+                        </div>
+                        <div class="toggler">
+                            <span class="text">No</span>
+                            <p-inputSwitch formControlName="featured" class="input-switch"></p-inputSwitch>
+                            <span class="text">Yes</span>
+                        </div>
+                    </div>
+                    <p class="max-offer-text">
+                        <small>Maximum 3 feature offer will be displayed in the landing-page</small>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">Banner Image (Optional)</label>
+
+                        <small>Image Size: 100 x 180 pixels Format: PNG, JPEG Maximum file size: 5 MB</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Offer Link</label>
+                        <div class="radio-wrapper">
+                            <p-radioButton name="groupname" [value]="newLink" label="New link"
+                                formControlName="offerLink" inputId="opt1" (onClick)="updateSelection('newLink')">
+                            </p-radioButton>
+                            <p-radioButton name="groupname" [value]="website" label="Website"
+                                formControlName="offerLink" inputId="opt2" (onClick)="updateSelection('website')">
+                            </p-radioButton>
+                            <p-radioButton name="groupname" [value]="contactUs" label="Contact us"
+                                formControlName="offerLink" inputId="opt3" (onClick)="updateSelection('contactUs')">
+                            </p-radioButton>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" formControlName="offerLinkValue" id="comment"
+                        fnValidateOnBlur [validateFormControl]="formField.offerLinkValue"
+                        [ngClass]="{ 'is-invalid': submitted && formField.offerLinkValue.hasError('required') }">
+                        {{formField.offerLinkValue}}
+                    </textarea>
+                    <div class="invalid-feedback"
+                    *ngIf="formField.offerLinkValue.hasError('required') && submitted">This field cannot be
+                    blank
+                </div>
+                <div class="invalid-feedback"
+                    *ngIf="formField.offerLinkValue.hasError('pattern')&& formField.offerLinkValue.touched">
+                            Invalid
+                            weblink
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</fn-modal-content>

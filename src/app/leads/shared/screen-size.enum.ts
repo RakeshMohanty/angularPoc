@@ -1,0 +1,4 @@
+export enum SCREEN_SIZE {
+    SMALL_DEVICE = 990,
+    LARGE_DEVICE = 1920
+}
